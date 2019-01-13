@@ -1,0 +1,10 @@
+﻿  2048.cpp
+e:\onedrive - university of waterloo\c++\2048\2048\classes.h(79): warning C4018: '<': signed/unsigned mismatch
+e:\onedrive - university of waterloo\c++\2048\2048\classes.h(366): warning C4804: '+=': unsafe use of type 'bool' in operation
+e:\onedrive - university of waterloo\c++\2048\2048\classes.h(376): warning C4804: '+=': unsafe use of type 'bool' in operation
+e:\onedrive - university of waterloo\c++\2048\2048\classes.h(386): warning C4804: '+=': unsafe use of type 'bool' in operation
+e:\onedrive - university of waterloo\c++\2048\2048\classes.h(396): warning C4804: '+=': unsafe use of type 'bool' in operation
+e:\onedrive - university of waterloo\c++\2048\2048\classes.h(412): warning C4804: '+=': unsafe use of type 'bool' in operation
+e:\onedrive - university of waterloo\c++\2048\2048\2048.cpp(52): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+e:\onedrive - university of waterloo\c++\2048\2048\classes.h(150): warning C4715: 'Grid::deleteTile': not all control paths return a value
+  2048.vcxproj -> E:\OneDrive - University of Waterloo\C++\2048\Debug\2048.exe
