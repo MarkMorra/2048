@@ -1,3 +1,6 @@
+// Mark Morra
+// 2019
+
 #pragma once
 #include "stdafx.h"
 #include "math.h"
