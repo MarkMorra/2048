@@ -1,7 +1,12 @@
+// Mark Morra
+// 2019
+
 #pragma once
 
-int numDigits(int number)
+int numDigits(int number) //returns the number of digits in a number
 {
+
+	//https://www.geeksforgeeks.org/program-for-sum-the-digits-of-a-given-number/
 	if (number == 0) { return 1; }
 
 	int digits = 0;
