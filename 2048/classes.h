@@ -48,6 +48,83 @@ bool Tile::getsetValue(int newValue)
 	return true;
 }
 
+class Colours
+{
+public:
+	Colours();
+	~Colours();
+
+	string getsetEmptyC();
+	void getsetEmptyC(string);
+	string getsetDefaultC();
+	void getsetDefaultC(string);
+	string getsetColours(int);
+	void getsetColours(string*, int);
+
+
+private:
+	string emptyC, defaultC;
+	string* colours;
+	int coloursSize = 0;
+};
+
+Colours::Colours()
+{
+}
+
+Colours::~Colours()
+{
+}
+
+string Colours::getsetEmptyC()
+{
+	return emptyC;
+}
+
+void Colours::getsetEmptyC(string str)
+{
+	emptyC = str;
+}
+
+string Colours::getsetDefaultC()
+{
+	return defaultC;
+}
+
+void Colours::getsetDefaultC(string str)
+{
+	defaultC = str;
+}
+
+inline string Colours::getsetColours(int index)
+{
+	if (index < 0 || index > coloursSize - 1)
+	{
+		return defaultC;
+	}
+	else
+	{
+		return colours[index];
+	}
+}
+
+void Colours::getsetColours(string *newColours, int size)
+{
+
+	coloursSize = size;
+
+	delete colours;
+	colours = new string[coloursSize];
+
+	for (int i = 0; i < coloursSize; i++)
+	{
+
+		colours[i] = newColours[i];
+
+	}
+
+}
+
 class Grid
 {
 public:
@@ -61,6 +138,8 @@ public:
 	int getscore();
 	string renderGrid();
 	string renderScore();
+
+	Colours colours;
 
 private:
 	int width, height;
@@ -152,20 +231,18 @@ bool Grid::deleteTile(int x, int y)
 string Grid::renderGrid()
 {
 	string render = "";
-	string eC = "&07", neC = "&67";
-
 
 	for (int i = 0; i < height; i++)
 	{
 		for (int j = 0; j < width; j++)
 		{
-			render += ((grid[j][i] == nullptr) ? eC : neC) + "+----+";
+			render += ((grid[j][i] == nullptr) ? colours.getsetEmptyC() : colours.getsetColours(int(log2f(grid[j][i]->getsetValue())))) + "+----+";
 		}
 		render += "\n";
 
 		for (int j = 0; j < width; j++)
 		{
-			render += ((grid[j][i] == nullptr) ? eC : neC) + "|    |";
+			render += ((grid[j][i] == nullptr) ? colours.getsetEmptyC() : colours.getsetColours(int(log2f(grid[j][i]->getsetValue())))) + "|    |";
 		}
 		render += "\n";
 
@@ -173,26 +250,26 @@ string Grid::renderGrid()
 		{
 			if (grid[j][i] == nullptr)
 			{
-				render += eC + "|    |";
+				render += colours.getsetEmptyC() + "|    |";
 			}
 			else
 			{
 				char strNumber[5];
 				sprintf_s(strNumber, 5, "%4d", grid[j][i]->getsetValue());
-				render += neC + "|" + string(strNumber) + "|";
+				render += colours.getsetColours(int(log2f(grid[j][i]->getsetValue()))) + "|" + string(strNumber) + "|";
 			}
 		}
 		render += "\n";
 
 		for (int j = 0; j < width; j++)
 		{
-			render += ((grid[j][i] == nullptr) ? eC : neC) + "|    |";
+			render += ((grid[j][i] == nullptr) ? colours.getsetEmptyC() : colours.getsetColours(int(log2f(grid[j][i]->getsetValue())))) + "|    |";
 		}
 		render += "\n";
 
 		for (int j = 0; j < width; j++)
 		{
-			render += ((grid[j][i] == nullptr) ? eC : neC) + "+----+";
+			render += ((grid[j][i] == nullptr) ? colours.getsetEmptyC() : colours.getsetColours(int(log2f(grid[j][i]->getsetValue())))) + "+----+";
 		}
 		render += "\n";
 	}
@@ -451,3 +528,4 @@ int Grid::getscore()
 {
 	return score;
 }
+
